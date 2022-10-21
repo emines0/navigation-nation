@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital@1&display=swap');
 
 :root {
   --primaryColor: #fff;
@@ -11,17 +11,109 @@
 
 html {
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
   background: #000;
-
+  font-family: 'Nunito', sans-serif;
 }
 
 /* --- Navigation Menu ------------------------------ */
 
+/* Overlay */
+.overlay{
+  position: fixed;
+  z-index: 9; /*will be above everything in the page. Default value is 1*/
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  transform: translateX(-100vw); /*out of view*/
+}
 
+.overlay-slide-right{
+  transition: all 0.4s ease-in-out; /*duration for animation above in overlay class*/
+  transform: translateX(0); /*bring it to the view*/
+}
+
+.overlay-slide-left{
+  transition: all 0.8s ease-in-out; /*duration for animation above in overlay class*/
+  transform: translateX(-100vw);  /*out of view*/
+}
+
+/* Nav Menu Items */
+nav,
+nav ul {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul {
+  display: flex;
+  flex-direction: column; /*makes thing go from top to bottom*/
+  justify-content: stretch;
+  list-style: none;
+}
+
+nav ul li {
+  height: 20%;
+  overflow: hidden; /*prevent to stretch page horizontaly*/
+
+}
+
+nav li a {
+  position: relative; 
+  top: 45%; /*takes less then 50% because font takes some space*/
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  display: block;
+  text-align-last: center;
+}
+
+nav li a:hover {
+  transform: scale(1.2); /*makes nav anchor 20% bigger*/
+}
+
+nav li a::before { /*allowing add content before anchor element (to the left side)*/
+  content: '';
+  width: 25vw;
+  height: 3px;
+  background-color: #fff;
+  position: absolute;
+  top: 47.5%;
+  left:0;
+  opacity: 0;
+}
+
+nav li a:hover::before {
+  opacity: 1;
+}
+
+nav li:nth-of-type(1) {
+  background-color: var(--navColor1);
+}
+
+nav li:nth-of-type(2) {
+  background-color: var(--navColor2);
+}
+
+nav li:nth-of-type(3) {
+  background-color: var(--navColor3);
+}
+
+nav li:nth-of-type(4) {
+  background-color: var(--navColor4);
+}
+
+nav li:nth-of-type(5) {
+  background-color: var(--navColor5);
+}
 
 /* --- Menu Bars ------------------------------------ */
 
